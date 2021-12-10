@@ -6,6 +6,7 @@ class Node:
         self.value = value
         self.next = None
 
+
 class CircularSinglyLinkedList:
     def __init__(self):
         self.head = None
@@ -18,16 +19,16 @@ class CircularSinglyLinkedList:
             node = node.next
             if node == self.tail.next:
                 break
-            
 
     #  Creation of circular singly linked list
+
     def createCSLL(self, nodeValue):
         node = Node(nodeValue)
         node.next = node
         self.head = node
         self.tail = node
         return "The CSLL has been created"
-    
+
     #  Insertion of a node in circular singly linked list
 
     def insertCSLL(self, value, location):
@@ -53,7 +54,7 @@ class CircularSinglyLinkedList:
                 tempNode.next = newNode
                 newNode.next = nextNode
             return "The node has been successfully inserted"
-    
+
     # Traversal of a node in circular singly linked list
     def traversalCSLL(self):
         if self.head is None:
@@ -65,7 +66,7 @@ class CircularSinglyLinkedList:
                 tempNode = tempNode.next
                 if tempNode == self.tail.next:
                     break
-    
+
     # Searching for a node in circular singly linked list
     def searchCSLL(self, nodeValue):
         if self.head is None:
@@ -113,7 +114,7 @@ class CircularSinglyLinkedList:
                     index += 1
                 nextNode = tempNode.next
                 tempNode.next = nextNode.next
-    
+
     # Delete entire circular sinlgy linked list
     def deleteEntireCSLL(self):
         self.head = None
@@ -121,25 +122,12 @@ class CircularSinglyLinkedList:
         self.tail = None
 
 
-
 circularSLL = CircularSinglyLinkedList()
 circularSLL.createCSLL(0)
-circularSLL.insertCSLL(1,1)
-circularSLL.insertCSLL(2,1)
-circularSLL.insertCSLL(3,1)
+circularSLL.insertCSLL(1, 1)
+circularSLL.insertCSLL(2, 1)
+circularSLL.insertCSLL(3, 1)
 
-print([node.value for node in circularSLL]) 
+print([node.value for node in circularSLL])
 circularSLL.deleteEntireCSLL()
-print([node.value for node in circularSLL]) 
-
-
-
-
-
-
-
-
-
-
-
-
+print([node.value for node in circularSLL])
