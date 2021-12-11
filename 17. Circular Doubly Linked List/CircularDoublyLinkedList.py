@@ -7,12 +7,12 @@ class Node:
         self.next = None
         self.prev = None
 
+
 class CircularDoublyLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
 
-    
     def __iter__(self):
         node = self.head
         while node:
@@ -20,7 +20,7 @@ class CircularDoublyLinkedList:
             node = node.next
             if node == self.tail.next:
                 break
-    
+
     #  Creation of Circular Doubly Linked List
     def createCDLL(self, nodeValue):
         newNode = Node(nodeValue)
@@ -30,8 +30,8 @@ class CircularDoublyLinkedList:
         newNode.next = newNode
         return "The CDLL is created successfully"
 
-
     # Insertion Method in Circular Doubly Linked List
+
     def insertCDLL(self, value, location):
         if self.head is None:
             return "The CDLL does not exist"
@@ -43,7 +43,7 @@ class CircularDoublyLinkedList:
                 self.head.prev = newNode
                 self.head = newNode
                 self.tail.next = newNode
-            elif location == 1:
+            elif location == -1:
                 newNode.next = self.head
                 newNode.prev = self.tail
                 self.head.prev = newNode
@@ -84,7 +84,7 @@ class CircularDoublyLinkedList:
                 if tempNode == self.head:
                     break
                 tempNode = tempNode.prev
-    
+
     # Search Circular Doubly Linked List
     def searchCDLL(self, nodeValue):
         if self.head is None:
@@ -97,7 +97,7 @@ class CircularDoublyLinkedList:
                 if tempNode == self.tail:
                     return "The value does not exist in CDLL"
                 tempNode = tempNode.next
-    
+
     # Delete a node from Circular Doubly Linked List
     def deleteNode(self, location):
         if self.head is None:
@@ -113,7 +113,7 @@ class CircularDoublyLinkedList:
                     self.head = self.head.next
                     self.head.prev = self.tail
                     self.tail.next = self.head
-            elif location == 1:
+            elif location == -1:
                 if self.head == self.tail:
                     self.head.prev = None
                     self.head.next = None
@@ -132,7 +132,7 @@ class CircularDoublyLinkedList:
                 curNode.next = curNode.next.next
                 curNode.next.prev = curNode
             print("The node has been successfully deleted")
-    
+
     # Delete entire Circular Doubly Linked List
     def deleteCDLL(self):
         if self.head is None:
@@ -146,19 +146,15 @@ class CircularDoublyLinkedList:
             self.head = None
             self.tail = None
             print("The CDLL has been successfully deleted")
-    
 
 
 circularDLL = CircularDoublyLinkedList()
 circularDLL.createCDLL(5)
-circularDLL.insertCDLL(0,0)
-circularDLL.insertCDLL(1,1)
-circularDLL.insertCDLL(2,2)
+circularDLL.insertCDLL(0, 0)
+circularDLL.insertCDLL(1, 1)
+circularDLL.insertCDLL(2, 2)
+print([node.value for node in circularDLL])
+circularDLL.deleteNode(6)
 print([node.value for node in circularDLL])
 circularDLL.deleteCDLL()
 print([node.value for node in circularDLL])
-
-
-
-
-    

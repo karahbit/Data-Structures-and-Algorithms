@@ -7,7 +7,7 @@ class Node:
         self.next = None
 
 
-class CircularSinglyLinkedList:
+class CircularcircularSLL:
     def __init__(self):
         self.head = None
         self.tail = None
@@ -40,7 +40,7 @@ class CircularSinglyLinkedList:
                 newNode.next = self.head
                 self.head = newNode
                 self.tail.next = newNode
-            elif location == 1:
+            elif location == -1:
                 newNode.next = self.tail.next
                 self.tail.next = newNode
                 self.tail = newNode
@@ -93,14 +93,14 @@ class CircularSinglyLinkedList:
                 else:
                     self.head = self.head.next
                     self.tail.next = self.head
-            elif location == 1:
+            elif location == -1:
                 if self.head == self.tail:
                     self.head.next = None
                     self.head = None
                     self.tail = None
                 else:
                     node = self.head
-                    while node is not None:
+                    while node:
                         if node.next == self.tail:
                             break
                         node = node.next
@@ -122,12 +122,35 @@ class CircularSinglyLinkedList:
         self.tail = None
 
 
-circularSLL = CircularSinglyLinkedList()
+circularSLL = CircularcircularSLL()
 circularSLL.createCSLL(0)
+circularSLL.insertCSLL(4, -1)
 circularSLL.insertCSLL(1, 1)
-circularSLL.insertCSLL(2, 1)
-circularSLL.insertCSLL(3, 1)
+circularSLL.insertCSLL(2, 2)
+circularSLL.insertCSLL(3, 3)
+
+circularSLL.deleteNode(7)
+# circularSLL.insertCSLL(4, 6)
+# circularSLL.insertCSLL(0, 0)
+# circularSLL.insertCSLL(5, 2)
 
 print([node.value for node in circularSLL])
-circularSLL.deleteEntireCSLL()
-print([node.value for node in circularSLL])
+
+# circularSLL.insertCSLL(6, 1)
+# print([node.value for node in circularSLL])
+
+
+# circularSLL.deleteNode(0)
+# print([node.value for node in circularSLL])
+# print(circularSLL.head.value, circularSLL.tail.value)
+# circularSLL.deleteNode(-1)
+# print([node.value for node in circularSLL])
+# print(circularSLL.head.value, circularSLL.tail.value)
+# circularSLL.deleteNode(2)
+# print([node.value for node in circularSLL])
+# print(circularSLL.head.value, circularSLL.tail.value)
+# circularSLL.deleteNode(10)
+# print([node.value for node in circularSLL])
+# print(circularSLL.head.value, circularSLL.tail.value)
+# circularSLL.deleteEntireCSLL()
+# print([node.value for node in circularSLL])

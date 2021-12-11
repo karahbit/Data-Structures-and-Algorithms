@@ -7,18 +7,18 @@ class Node:
         self.next = None
         self.prev = None
 
+
 class DoublyLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
 
-    
     def __iter__(self):
         node = self.head
         while node:
             yield node
             node = node.next
-    
+
     #  Creation of Doubly Linked List
     def createDLL(self, nodeValue):
         node = Node(nodeValue)
@@ -27,10 +27,9 @@ class DoublyLinkedList:
         self.head = node
         self.tail = node
         return "The DLL is created Successfully"
-    
-    
-    
+
     #  Insertion Method in Doubly Linked List
+
     def insertNode(self, nodeValue, location):
         if self.head is None:
             print("The node cannot be inserted")
@@ -41,7 +40,7 @@ class DoublyLinkedList:
                 newNode.next = self.head
                 self.head.prev = newNode
                 self.head = newNode
-            elif location == 1:
+            elif location == -1:
                 newNode.next = None
                 newNode.prev = self.tail
                 self.tail.next = newNode
@@ -56,7 +55,7 @@ class DoublyLinkedList:
                 newNode.prev = tempNode
                 newNode.next.prev = newNode
                 tempNode.next = newNode
-    
+
     #  Traversal Method in Doubly Linked List
     def traverseDLL(self):
         if self.head is None:
@@ -66,7 +65,7 @@ class DoublyLinkedList:
             while tempNode:
                 print(tempNode.value)
                 tempNode = tempNode.next
-    
+
     #  Reverse Traversal Method in Doubly Linked List
     def reverseTraversalDLL(self):
         if self.head is None:
@@ -90,7 +89,7 @@ class DoublyLinkedList:
             return "The node does not exist in this list"
 
     # Delete a node from Doubly Linked List
-    def deleteNode(self,location):
+    def deleteNode(self, location):
         if self.head is None:
             print("There is not any element in DLL")
         else:
@@ -101,7 +100,7 @@ class DoublyLinkedList:
                 else:
                     self.head = self.head.next
                     self.head.prev = None
-            elif location == 1:
+            elif location == -1:
                 if self.head == self.tail:
                     self.head = None
                     self.tail = None
@@ -130,17 +129,15 @@ class DoublyLinkedList:
             self.head = None
             self.tail = None
             print("The DLL has been successfully deleted")
-    
 
 
-doubyLL = DoublyLinkedList()
-doubyLL.createDLL(5)
-doubyLL.insertNode(0,0)
-doubyLL.insertNode(2,1)
-doubyLL.insertNode(6,2)
-print([node.value for node in doubyLL]) 
-doubyLL.deleteDLL()
-print([node.value for node in doubyLL]) 
+circularSLL = DoublyLinkedList()
+circularSLL.createDLL(0)
+circularSLL.insertNode(4, -1)
+circularSLL.insertNode(1, 1)
+circularSLL.insertNode(2, 2)
+circularSLL.insertNode(3, 3)
 
+circularSLL.deleteNode(1)
 
-
+print([node.value for node in circularSLL])

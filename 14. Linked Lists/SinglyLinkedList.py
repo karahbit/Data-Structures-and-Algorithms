@@ -6,16 +6,19 @@ class Node:
         self.value = value
         self.next = None
 
+
 class SLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+
     def __iter__(self):
         node = self.head
         while node:
             yield node
             node = node.next
     # insert in Linked List
+
     def insertSLL(self, value, location):
         newNode = Node(value)
         if self.head is None:
@@ -51,9 +54,10 @@ class SLinkedList:
                 print(node.value)
                 node = node.next
     # Search for a node in Singly Linked List
+
     def searchSLL(self, nodeValue):
         if self.head is None:
-           return "The list does not exist"
+            return "The list does not exist"
         else:
             node = self.head
             while node is not None:
@@ -94,6 +98,7 @@ class SLinkedList:
                 if nextNode.next == self.tail:
                     self.tail = tempNode
     # Delete entire SLL
+
     def deleteEntireSLL(self):
         if self.head is None:
             print("The SLL does not exist")
@@ -110,27 +115,23 @@ singlyLinkedList.insertSLL(4, 6)
 singlyLinkedList.insertSLL(0, 0)
 singlyLinkedList.insertSLL(5, 2)
 
-print([node.value for node in singlyLinkedList]) 
+print([node.value for node in singlyLinkedList])
 
+singlyLinkedList.insertSLL(6, 1)
+print([node.value for node in singlyLinkedList])
 
 
 singlyLinkedList.deleteNode(0)
-print([node.value for node in singlyLinkedList]) 
+print([node.value for node in singlyLinkedList])
 print(singlyLinkedList.head.value, singlyLinkedList.tail.value)
 singlyLinkedList.deleteNode(-1)
-print([node.value for node in singlyLinkedList]) 
+print([node.value for node in singlyLinkedList])
 print(singlyLinkedList.head.value, singlyLinkedList.tail.value)
 singlyLinkedList.deleteNode(2)
-print([node.value for node in singlyLinkedList]) 
+print([node.value for node in singlyLinkedList])
 print(singlyLinkedList.head.value, singlyLinkedList.tail.value)
 singlyLinkedList.deleteNode(10)
-print([node.value for node in singlyLinkedList]) 
+print([node.value for node in singlyLinkedList])
 print(singlyLinkedList.head.value, singlyLinkedList.tail.value)
 # singlyLinkedList.deleteEntireSLL()
-# print([node.value for node in singlyLinkedList]) 
-
-
-
-
-
-
+# print([node.value for node in singlyLinkedList])
