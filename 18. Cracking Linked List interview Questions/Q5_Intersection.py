@@ -5,10 +5,11 @@
 
 from LinkedList import LinkedList, Node
 
+
 def intersection(llA, llB):
     if llA.tail is not llB.tail:
         return False
-    
+
     lenA = len(llA)
     lenB = len(llB)
 
@@ -21,11 +22,11 @@ def intersection(llA, llB):
 
     for i in range(diff):
         longerNode = longerNode.next
-    
+
     while shorterNode is not longerNode:
         shorterNode = shorterNode.next
         longerNode = longerNode.next
-    
+
     return longerNode
 
 
@@ -37,11 +38,12 @@ def addSameNode(llA, llB, value):
     llB.tail.next = tempNode
     llB.tail = tempNode
 
+
 llA = LinkedList()
-llA.generate(3,0, 10)
+llA.generate(3, 0, 10)
 
 llB = LinkedList()
-llB.generate(4,0, 10)
+llB.generate(4, 0, 10)
 
 addSameNode(llA, llB, 11)
 addSameNode(llA, llB, 14)
@@ -50,8 +52,3 @@ print(llA)
 print(llB)
 
 print(intersection(llA, llB))
-
-
-
-
-    
