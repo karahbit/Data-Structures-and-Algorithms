@@ -11,7 +11,7 @@ class new_Node:
 
 def height(root):
     if(not root):
-        return 0
+        return -1
 
     leftHt = height(root.left)
     rightHt = height(root.right)
@@ -27,9 +27,9 @@ def deepestNode(root, levels):
     if(not root):
         return
 
-    if(levels == 1):
+    if(levels == 0):
         print(root.data)
-    elif(levels > 1):
+    elif(levels > 0):
         deepestNode(root.left, levels - 1)
         deepestNode(root.right, levels - 1)
 
