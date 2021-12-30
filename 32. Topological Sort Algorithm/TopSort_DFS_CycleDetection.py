@@ -7,6 +7,7 @@ def create_graph(projects, dependencies):
     return project_graph
 
 
+# For a pair (a,b) b is dependent on a
 graph = create_graph([0, 1, 2, 3, 4, 5], [
                      (0, 3), (5, 1), (1, 3), (5, 0), (3, 2)])
 
@@ -34,7 +35,7 @@ def is_cyclic(graph):
             if is_cyclic_util(graph, visited, node, top_order):
                 return False
 
-    print(top_order[::-1])
+    print(top_order[:: -1])
     return True
 
 
