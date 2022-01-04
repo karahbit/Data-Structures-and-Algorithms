@@ -1,7 +1,8 @@
-#   Created by Elshad Karimov 
+#   Created by Elshad Karimov
 #   Copyright © 2021 AppMillers. All rights reserved.
 
 import QueueLinkedList as queue
+
 
 class AVLNode:
     def __init__(self, data):
@@ -10,12 +11,14 @@ class AVLNode:
         self.rightChild = None
         self.height = 1
 
+
 def preOrderTraversal(rootNode):
     if not rootNode:
         return
     print(rootNode.data)
     preOrderTraversal(rootNode.leftChild)
     preOrderTraversal(rootNode.rightChild)
+
 
 def inOrderTraversal(rootNode):
     if not rootNode:
@@ -24,12 +27,14 @@ def inOrderTraversal(rootNode):
     print(rootNode.data)
     inOrderTraversal(rootNode.rightChild)
 
+
 def postOrderTraversal(rootNode):
     if not rootNode:
         return
     postOrderTraversal(rootNode.leftChild)
     postOrderTraversal(rootNode.rightChild)
     print(rootNode.data)
+
 
 def levelOrderTraversal(rootNode):
     if not rootNode:
@@ -60,31 +65,42 @@ def searchNode(rootNode, nodeValue):
         else:
             searchNode(rootNode.rightChild, nodeValue)
 
+
 def getHeight(rootNode):
     if not rootNode:
         return 0
     return rootNode.height
 
+
 def rightRotate(disbalanceNode):
     newRoot = disbalanceNode.leftChild
     disbalanceNode.leftChild = disbalanceNode.leftChild.rightChild
     newRoot.rightChild = disbalanceNode
-    disbalanceNode.height = 1 + max(getHeight(disbalanceNode.leftChild), getHeight(disbalanceNode.rightChild))
-    newRoot.height = 1 + max(getHeight(newRoot.leftChild), getHeight(newRoot.rightChild))
+    disbalanceNode.height = 1 + \
+        max(getHeight(disbalanceNode.leftChild),
+            getHeight(disbalanceNode.rightChild))
+    newRoot.height = 1 + max(getHeight(newRoot.leftChild),
+                             getHeight(newRoot.rightChild))
     return newRoot
+
 
 def leftRotate(disbalanceNode):
     newRoot = disbalanceNode.rightChild
     disbalanceNode.rightChild = disbalanceNode.rightChild.leftChild
     newRoot.leftChild = disbalanceNode
-    disbalanceNode.height = 1 + max(getHeight(disbalanceNode.leftChild), getHeight(disbalanceNode.rightChild))
-    newRoot.height = 1 + max(getHeight(newRoot.leftChild), getHeight(newRoot.rightChild))
+    disbalanceNode.height = 1 + \
+        max(getHeight(disbalanceNode.leftChild),
+            getHeight(disbalanceNode.rightChild))
+    newRoot.height = 1 + max(getHeight(newRoot.leftChild),
+                             getHeight(newRoot.rightChild))
     return newRoot
+
 
 def getBalance(rootNode):
     if not rootNode:
         return 0
     return getHeight(rootNode.leftChild) - getHeight(rootNode.rightChild)
+
 
 def insertNode(rootNode, nodeValue):
     if not rootNode:
@@ -93,8 +109,9 @@ def insertNode(rootNode, nodeValue):
         rootNode.leftChild = insertNode(rootNode.leftChild, nodeValue)
     else:
         rootNode.rightChild = insertNode(rootNode.rightChild, nodeValue)
-    
-    rootNode.height = 1 + max(getHeight(rootNode.leftChild), getHeight(rootNode.rightChild))
+
+    rootNode.height = 1 + \
+        max(getHeight(rootNode.leftChild), getHeight(rootNode.rightChild))
     balance = getBalance(rootNode)
     if balance > 1 and nodeValue < rootNode.leftChild.data:
         return rightRotate(rootNode)
@@ -108,10 +125,12 @@ def insertNode(rootNode, nodeValue):
         return leftRotate(rootNode)
     return rootNode
 
+
 def getMinValueNode(rootNode):
     if rootNode is None or rootNode.leftChild is None:
         return rootNode
     return getMinValueNode(rootNode.leftChild)
+
 
 def deleteNode(rootNode, nodeValue):
     if not rootNode:
@@ -132,6 +151,8 @@ def deleteNode(rootNode, nodeValue):
         temp = getMinValueNode(rootNode.rightChild)
         rootNode.data = temp.data
         rootNode.rightChild = deleteNode(rootNode.rightChild, temp.data)
+    rootNode.height = 1 + \
+        max(getHeight(rootNode.leftChild), getHeight(rootNode.rightChild))
     balance = getBalance(rootNode)
     if balance > 1 and getBalance(rootNode.leftChild) >= 0:
         return rightRotate(rootNode)
@@ -143,15 +164,15 @@ def deleteNode(rootNode, nodeValue):
     if balance < -1 and getBalance(rootNode.rightChild) > 0:
         rootNode.rightChild = rightRotate(rootNode.rightChild)
         return leftRotate(rootNode)
-    
+
     return rootNode
+
 
 def deleteAVL(rootNode):
     rootNode.data = None
     rootNode.leftChild = None
     rootNode.rightChild = None
     return "The AVL has been successfully deleted"
-
 
 
 newAVL = AVLNode(5)

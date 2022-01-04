@@ -1,4 +1,4 @@
-#   Created by Elshad Karimov 
+#   Created by Elshad Karimov
 #   Copyright © 2021 AppMillers. All rights reserved.
 
 class Graph:
@@ -6,10 +6,10 @@ class Graph:
         if gdict is None:
             gdict = {}
         self.gdict = gdict
-    
+
     def addEdge(self, vertex, edge):
         self.gdict[vertex].append(edge)
-    
+
     def bfs(self, vertex):
         visited = [vertex]
         queue = [vertex]
@@ -20,7 +20,7 @@ class Graph:
                 if adjacentVertex not in visited:
                     visited.append(adjacentVertex)
                     queue.append(adjacentVertex)
-    
+
     def dfs(self, vertex):
         visited = [vertex]
         stack = [vertex]
@@ -31,20 +31,16 @@ class Graph:
                 if adjacentVertex not in visited:
                     visited.append(adjacentVertex)
                     stack.append(adjacentVertex)
-    
 
 
-
-customDict = { "a" : ["b","c"],
-            "b" : ["a", "d", "e"],
-            "c" : ["a", "e"],
-            "d" : ["b", "e", "f"],
-            "e" : ["d", "f", "c"],
-            "f" : ["d", "e"]
-               }
-
+customDict = {"a": ["b", "c"],
+              "b": ["a", "d", "e"],
+              "c": ["a", "e"],
+              "d": ["b", "e", "f"],
+              "e": ["d", "f", "c"],
+              "f": ["d", "e"]
+              }
 
 
 g = Graph(customDict)
 g.dfs("a")
-
