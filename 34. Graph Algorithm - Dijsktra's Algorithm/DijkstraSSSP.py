@@ -28,9 +28,7 @@ def dijkstra(graph, initial):
         minNode = None
         for node in nodes:
             if node in visited:
-                if minNode is None:
-                    minNode = node
-                elif visited[node] < visited[minNode]:
+                if minNode is None or visited[node] < visited[minNode]:
                     minNode = node
         if minNode is None:
             break
