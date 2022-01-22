@@ -13,22 +13,22 @@ class Graph:
 
 
 def dfs(graph, temp, v, visited):
-    visited.append(v)
+    visited[v] = True
 
     temp.append(v)
 
     for i in graph.gdict[v]:
-        if i not in visited:
+        if not visited[i]:
             temp = dfs(graph, temp, i, visited)
     return temp
 
 
 def connected_components(graph):
-    visited = []
+    visited = {i: False for i in graph.gdict}
     cc = []
 
     for i in graph.gdict:
-        if i not in visited:
+        if not visited[i]:
             temp = []
             cc.append(dfs(graph, temp, i, visited))
     return cc
