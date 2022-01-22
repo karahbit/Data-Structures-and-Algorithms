@@ -3,6 +3,8 @@
 
 # Disjoint Set in Python
 
+from collections import defaultdict
+
 
 class DisjointSet:
     def __init__(self, vertices):
@@ -26,13 +28,24 @@ class DisjointSet:
             self.parent[yroot] = xroot
             self.rank[xroot] += 1
 
+    def get_sets(self):
+        sets = defaultdict(list)
+        for item, parent in self.parent.items():
+            sets[parent].append(item)
+
+        return list(sets.values())
+
+    def connected(self, x, y):
+        return self.find(x) == self.find(y)
+
 
 vertices = ["A", "B", "C", "D", "E"]
 
 ds = DisjointSet(vertices)
 ds.union("A", "B")
-ds.union("A", "C")
-print(ds.find("A"))
-print(ds.parent)
-print(ds.rank)
-
+# ds.union("A", "C")
+# print(ds.find("A"))
+# print(ds.parent)
+# print(ds.rank)
+# print(ds.connected("D", "B"))
+print(ds.get_sets())
