@@ -1,8 +1,9 @@
-#   Created by Elshad Karimov 
+#   Created by Elshad Karimov
 #   Copyright © 2021 AppMillers. All rights reserved.
 
 # Kruskal Algorithm  in Python
 import DisjointSet as dst
+
 
 class Graph:
     def __init__(self, vertices):
@@ -13,14 +14,14 @@ class Graph:
 
     def addEdge(self, s, d, w):
         self.graph.append([s, d, w])
-    
+
     def addNode(self, value):
         self.nodes.append(value)
-    
-    def printSolution(self,s,d,w):
+
+    def printSolution(self, s, d, w):
         for s, d, w in self.MST:
             print("%s - %s: %s" % (s, d, w))
-    
+
     def kruskalAlgo(self):
         i, e = 0, 0
         ds = dst.DisjointSet(self.nodes)
@@ -32,9 +33,10 @@ class Graph:
             y = ds.find(d)
             if x != y:
                 e += 1
-                self.MST.append([s,d,w])
-                ds.union(x,y)
-        self.printSolution(s,d,w)
+                self.MST.append([s, d, w])
+                ds.union(x, y)
+        self.printSolution(s, d, w)
+
 
 g = Graph(5)
 g.addNode("A")
@@ -58,5 +60,4 @@ g.addEdge("E", "A", 15)
 g.addEdge("E", "C", 20)
 
 g.kruskalAlgo()
-
 
