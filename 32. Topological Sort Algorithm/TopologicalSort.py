@@ -13,18 +13,18 @@ class Graph:
         self.graph[vertex].append(edge)
 
     def topogologicalSortUtil(self, v, visited, stack):
-        visited.append(v)
+        visited.add(v)
 
         for i in self.graph[v]:
             if i not in visited:
                 self.topogologicalSortUtil(i, visited, stack)
 
-        #stack.insert(0, v)
+        # stack.insert(0, v)
         stack.append(v)
 
     def topologicalSort(self):
 
-        visited = []
+        visited = set()
         stack = []
 
         for k in list(self.graph):

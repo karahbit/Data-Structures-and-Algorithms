@@ -31,7 +31,6 @@ class Graph:
             self.MST.append([self.nodes[s], self.nodes[d], self.edges[s][d]])
             visited[d] = True
             e += 1
-
         self.print_solution()
 
 
