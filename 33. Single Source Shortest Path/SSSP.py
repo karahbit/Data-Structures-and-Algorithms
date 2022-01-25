@@ -2,6 +2,9 @@
 #   Copyright © 2021 AppMillers. All rights reserved.
 
 
+from collections import deque
+
+
 class Graph:
     def __init__(self, gdict=None):
         if gdict is None:
@@ -9,10 +12,10 @@ class Graph:
         self.gdict = gdict
 
     def bfs(self, start, end):
-        queue = []
-        queue.append([start])
+        queue = deque([start])
         while queue:
-            path = queue.pop(0)
+            print(queue)
+            path = queue.popleft()
             node = path[-1]
             if node == end:
                 return path
@@ -32,4 +35,4 @@ customDict = {
 }
 
 g = Graph(customDict)
-print(g.bfs("a", "z"))
+print(g.bfs("a", "f"))
