@@ -30,8 +30,8 @@ class DisjointSet:
 
     def get_sets(self):
         sets = defaultdict(list)
-        for item, parent in self.parent.items():
-            sets[parent].append(item)
+        for item in self.parent:
+            sets[self.find(item)].append(item)
 
         return list(sets.values())
 
