@@ -24,6 +24,7 @@ def f(n):
 print(f(5))
 
 
+# Bottom-up
 def f(n):
 
     def f_helper(i, n):
@@ -38,6 +39,17 @@ def f(n):
         return f_helper(i+1, n) + f_helper(i+3, n) + f_helper(i+4, n)
 
     return f_helper(0, n)
+
+
+print(f(5))
+
+
+def f(n):
+    if n in (0, 1, 2):
+        return 1
+    if n == 3:
+        return 2
+    return f(n-1) + f(n-3) + f(n-4)
 
 
 print(f(5))
