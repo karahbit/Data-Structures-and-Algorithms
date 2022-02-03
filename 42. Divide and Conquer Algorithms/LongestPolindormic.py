@@ -1,4 +1,4 @@
-#   Created by Elshad Karimov 
+#   Created by Elshad Karimov
 #   Copyright © AppMillers. All rights reserved.
 
 # Longest Polindromic Subsequence in Python
@@ -14,5 +14,6 @@ def findLPS(s, startIndex, endIndex):
         op1 = findLPS(s, startIndex, endIndex-1)
         op2 = findLPS(s, startIndex+1, endIndex)
         return max(op1, op2)
+
 
 print(findLPS("ELRMENMET", 0, 8))
