@@ -7,19 +7,19 @@ class NQueens:
         for i in range(self.n):
             for j in range(self.n):
                 if self.board[i][j] == 1:
-                    print(" Q ", end='')
+                    print("Q", end=' ')
                 else:
-                    print(" - ", end='')
+                    print(".", end=' ')
             print()
 
     def is_place_safe(self, row, col):
-        for j in range(self.n):
+        for j in range(col):
             if self.board[row][j] == 1:
                 return False
 
         j = col
         for i in range(row, -1, -1):
-            if i < 0:
+            if j < 0:
                 break
             if self.board[i][j] == 1:
                 return False
@@ -27,7 +27,7 @@ class NQueens:
 
         j = col
         for i in range(row, self.n):
-            if i < 0:
+            if j < 0:
                 break
             if self.board[i][j] == 1:
                 return False
@@ -56,6 +56,6 @@ class NQueens:
 
 
 if __name__ == '__main__':
-    n = 4
+    n = 8
     nq = NQueens(n)
     nq.solve_NQueens()
