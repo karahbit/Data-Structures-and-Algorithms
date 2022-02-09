@@ -41,5 +41,11 @@ TwoDList = [[4, 7, 8, 6, 4],
             [2, 9, 8, 9, 3]
             ]
 
-print(min_cost2D_memo(TwoDList, 0, 0))
-print(min_cost2D_tab(TwoDList))
+# print(min_cost2D_memo(TwoDList, 0, 0))
+# print(min_cost2D_tab(TwoDList))
+
+assert min_cost2D_memo(TwoDList, 0, 0) == 36
+assert min_cost2D_memo(TwoDList, 0, 0) == min_cost2D_tab(TwoDList)
+print()
+print("All tests passed!")
+print()
