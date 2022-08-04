@@ -88,7 +88,7 @@ def merge(customList, l, m, r):
 
 def mergeSort(customList, l, r):
     if l < r:
-        m = (l+(r-1))//2
+        m = (l+r)//2
         mergeSort(customList, l, m)
         mergeSort(customList, m+1, r)
         merge(customList, l, m, r)
@@ -139,7 +139,7 @@ def heapSort(customList):
 
 
 cList = [2,1,7,6,5,3,4,9,8]
-heapSort(cList)
+mergeSort(cList,0,len(cList)-1)
 print(cList)
 
 
