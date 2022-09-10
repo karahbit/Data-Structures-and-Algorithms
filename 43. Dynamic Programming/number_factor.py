@@ -19,5 +19,18 @@ def number_factor_tab(n):
     return tb[n]
 
 
+# Optimized Bottom-Up + Tab
+def number_factor_opt(n):
+    tb = [1, 1, 1, 2]
+    for _ in range(4, n+1):
+        fourth = tb[-1] + tb[-3] + tb[-4]
+        tb[0] = tb[1]
+        tb[1] = tb[2]
+        tb[2] = tb[3]
+        tb[3] = fourth
+    return tb[3]
+
+
 print(number_factor_memo(7))
 print(number_factor_tab(7))
+print(number_factor_opt(7))
